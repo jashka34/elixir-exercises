@@ -3,7 +3,23 @@ defmodule CodeBasicsTest do
   import ExUnit.CaptureIO
   doctest CodeBasics
 
-  test "05/50 do math " do
+  test "06/50 any?" do
+    assert false == Solution0650.any?(false, false, false, false)
+    assert true == Solution0650.any?(true, false, false, false)
+    assert true == Solution0650.any?(false, true, false, false)
+    assert true == Solution0650.any?(false, false, true, false)
+    assert true == Solution0650.any?(false, false, false, true)
+    assert true == Solution0650.any?(false, true, false, true)
+  end
+
+  test "06/50 truthy?" do
+    assert 42 == Solution0650.truthy?(true, 42)
+    assert [42] == Solution0650.truthy?(1, [42])
+    assert false == Solution0650.truthy?("hello", false)
+    assert nil == Solution0650.truthy?("", nil)
+  end
+
+  test "05/50 do math" do
     # IO.puts(capture_io(fn -> Solution0550.do_math(10, 10) end))
     assert "2.0\n1\n0\n" == capture_io(fn -> Solution0550.do_math(10, 10) end)
     assert "4.0\n3\n5\n" == capture_io(fn -> Solution0550.do_math(15, 5) end)
