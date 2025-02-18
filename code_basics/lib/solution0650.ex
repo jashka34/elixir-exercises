@@ -4,6 +4,6 @@ defmodule Solution0650 do
   end
 
   def truthy?(a, b) do
-    false
+    a && b
   end
 end
