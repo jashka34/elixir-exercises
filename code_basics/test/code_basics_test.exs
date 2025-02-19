@@ -1,7 +1,20 @@
 defmodule CodeBasicsTest do
   use ExUnit.Case
   import ExUnit.CaptureIO
+  import Solution0950
   doctest CodeBasics
+
+  test "09/50 sigil_i" do
+    assert 40 == ~i(40)
+    assert -40 == ~i(40)n
+  end
+
+  test "08/50 hours_to_milliseconds" do
+    assert 0 == Solution0850.hours_to_milliseconds(0)
+    assert 3_600_000 == Solution0850.hours_to_milliseconds(1)
+    assert 5_400_000.0 == Solution0850.hours_to_milliseconds(1.5)
+    assert 7_200_000 == Solution0850.hours_to_milliseconds(2)
+  end
 
   test "06/50 any?" do
     assert false == Solution0650.any?(false, false, false, false)
