@@ -6,8 +6,10 @@ defmodule FizzBuzz do
 
   @doc "main() function go to main"
   def main() do
-    IO.puts("Start")
-    fizzbuzz(10)
+    1..30
+    |> Enum.map(&fizzbuzz/1)
+    |> Enum.join(" ")
+    |> IO.puts()
   end
 
   @doc "fizzbuzz_100(number) repeat fizzbuzz from 1 to 100"
