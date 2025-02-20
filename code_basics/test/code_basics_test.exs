@@ -4,6 +4,11 @@ defmodule CodeBasicsTest do
   import Solution0950
   doctest CodeBasics
 
+  test "11/50  lists" do
+    assert 42 == Solution1150.get_second_item([20, 22, 24])
+    assert 3 == Solution1150.get_second_item([1, 2, 3, 4])
+  end
+
   test "10/50 points and shapes" do
     point = {:point, 50, 50}
     assert Solution1050.is_point_inside_circle(point, {:circle, {:point, 10, 10}, 100})
