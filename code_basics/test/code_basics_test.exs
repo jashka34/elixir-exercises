@@ -4,6 +4,15 @@ defmodule CodeBasicsTest do
   import Solution0950
   doctest CodeBasics
 
+  test "10/50 points and shapes" do
+    point = {:point, 50, 50}
+    assert Solution1050.is_point_inside_circle(point, {:circle, {:point, 10, 10}, 100})
+    assert not Solution1050.is_point_inside_circle(point, {:circle, {:point, -10, -10}, 20})
+    point = {:point, -10, 20}
+    assert Solution1050.is_point_inside_rect(point, {:rect, {:point, -20, 30}, {:point, 20, 10}})
+    assert not Solution1050.is_point_inside_rect(point, {:rect, {:point, 0, 0}, {:point, 10, 10}})
+  end
+
   test "09/50 sigil_i" do
     assert 40 == ~i(40)
     assert -40 == ~i(40)n
