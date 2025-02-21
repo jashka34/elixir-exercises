@@ -4,7 +4,28 @@ defmodule CodeBasicsTest do
   import Solution
   doctest CodeBasics
 
-  test "11/50  lists" do
+  test "12/50 maps" do
+    map = %{a: 1, b: 2, c: 42}
+    assert Solution.keys_sum(map, :a, :b) == 3
+    assert Solution.keys_sum(map, :a, :c) == 43
+    assert Solution.keys_sum(map, :c, :b) == 44
+
+    map = %{one: 1, five: 5, ten: 10}
+    assert Solution.keys_product(map, :one, :five) == 5
+    assert Solution.keys_product(map, :five, :ten) == 50
+    assert Solution.keys_product(map, :two, :ten) == 10
+
+    map1 = %{a: 1, b: 2}
+    map2 = %{c: 3, d: 4}
+
+    assert Solution.copy_key(map1, map2, :a, 42) == %{c: 3, d: 4, a: 1}
+    assert Solution.copy_key(map1, map2, :b, 42) == %{c: 3, d: 4, b: 2}
+
+    assert Solution.copy_key(map2, map1, :d, 42) == %{a: 1, b: 2, d: 4}
+    assert Solution.copy_key(map2, map1, :e, 42) == %{a: 1, b: 2, e: 42}
+  end
+
+  test "11/50 lists" do
     assert 42 == get_second_item([20, 22, 24])
     assert 3 == get_second_item([1, 2, 3, 4])
   end
