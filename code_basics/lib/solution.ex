@@ -1,15 +1,19 @@
 defmodule Solution do
   # 12/50 
   def keys_sum(m, k1, k2) do
-    0
+    (m[k1] || 0) + (m[k2] || 0)
+    # Map.get(map, key1, 0) + Map.get(map, key2, 0)
   end
 
   def keys_product(m, k1, k2) do
-    0
+    (m[k1] || 1) * (m[k2] || 1)
+    # Map.get(map, key1, 1) * Map.get(map, key2, 1)
   end
 
   def copy_key(m1, m2, k, dv) do
-    %{}
+    Map.put(m2, k, m1[k] || dv)
+    # value = Map.get(from_map, key, default_value)
+    # Map.put(to_map, key, value)
   end
 
   # 11/50

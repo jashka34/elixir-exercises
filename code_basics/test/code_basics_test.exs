@@ -9,6 +9,7 @@ defmodule CodeBasicsTest do
     assert Solution.keys_sum(map, :a, :b) == 3
     assert Solution.keys_sum(map, :a, :c) == 43
     assert Solution.keys_sum(map, :c, :b) == 44
+    assert Solution.keys_sum(map, :a, :d) == 1
 
     map = %{one: 1, five: 5, ten: 10}
     assert Solution.keys_product(map, :one, :five) == 5
