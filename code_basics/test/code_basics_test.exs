@@ -4,6 +4,16 @@ defmodule CodeBasicsTest do
   import Solution
   doctest CodeBasics
 
+  test "13/50 maps" do
+    bob = {:user, "Bob", 42}
+    helen = {:user, "Helen", 20}
+    kate = {:user, "Kate", 22}
+    assert 42 == Solution.get_age(bob)
+    assert 20 == Solution.get_age(helen)
+    assert 22 == Solution.get_age(kate)
+    assert ["Bob", "Helen", "Kate"] == Solution.get_names([bob, helen, kate])
+  end
+
   test "12/50 maps" do
     map = %{a: 1, b: 2, c: 42}
     assert Solution.keys_sum(map, :a, :b) == 3
