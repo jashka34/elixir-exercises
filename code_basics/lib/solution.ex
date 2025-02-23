@@ -1,4 +1,16 @@
 defmodule Solution do
+  # 14/50
+  def get_values(d) do
+    %{a: av} = d
+    %{b: bv} = d
+    {av, bv}
+  end
+
+  def get_value_by_key(d, k) do
+    %{^k => v} = d
+    v
+  end
+
   # 13/50 
   def get_age(user) do
     {:user, _, age} = user

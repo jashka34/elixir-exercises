@@ -4,7 +4,24 @@ defmodule CodeBasicsTest do
   import Solution
   doctest CodeBasics
 
-  test "13/50 maps" do
+  # 14/50
+  test "14/50 pattern matching dictionaries" do
+    assert {1, 2} = get_values(%{a: 1, b: 2})
+    assert {:ok, 42} = get_values(%{a: :ok, b: 42, c: true})
+
+    assert_raise MatchError, fn ->
+      get_values(%{})
+    end
+
+    assert 42 = get_value_by_key(%{answer: 42}, :answer)
+    assert "6 * 7" = get_value_by_key(%{question: "6 * 7"}, :question)
+
+    assert_raise MatchError, fn ->
+      get_value_by_key(%{a: 1}, :b)
+    end
+  end
+
+  test "13/50 pattern matching maps" do
     bob = {:user, "Bob", 42}
     helen = {:user, "Helen", 20}
     kate = {:user, "Kate", 22}
