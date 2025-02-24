@@ -1,8 +1,28 @@
 defmodule Solution do
   # 15/50
   def join_game(player) do
-    {:user, name, age, role} = player
-    false
+    {:user, _, age, role} = player
+
+    case age >= 18 do
+      true ->
+        # IO.puts("ok 1")
+        :ok
+
+      false ->
+        case role do
+          :admin ->
+            # IO.puts("ok 2")
+            :ok
+
+          :moderator ->
+            # IO.puts("ok 3")
+            :ok
+
+          _ ->
+            # IO.puts("error")
+            :error
+        end
+    end
   end
 
   def move_allowed?(cur_color, figure) do
