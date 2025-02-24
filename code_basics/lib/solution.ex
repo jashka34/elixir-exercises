@@ -1,4 +1,15 @@
 defmodule Solution do
+  # 15/50
+  def join_game(player) do
+    {:user, name, age, role} = player
+    false
+  end
+
+  def move_allowed?(cur_color, figure) do
+    {type, color} = figure
+    false
+  end
+
   # 14/50
   def get_values(d) do
     %{a: av} = d
