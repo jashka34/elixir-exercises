@@ -1,4 +1,34 @@
 defmodule Solution do
+  # 16/50
+  def single_win?(a_win, b_win) do
+    cond do
+      a_win and not b_win ->
+        true
+
+      not a_win and b_win ->
+        true
+
+      true ->
+        false
+    end
+  end
+
+  def double_win?(a_win, b_win, c_win) do
+    if a_win and b_win and not c_win do
+      :ab
+    else
+      if a_win and not b_win and c_win do
+        :ac
+      else
+        if not a_win and b_win and c_win do
+          :bc
+        else
+          false
+        end
+      end
+    end
+  end
+
   # 15/50
   def join_game(player) do
     case player do
