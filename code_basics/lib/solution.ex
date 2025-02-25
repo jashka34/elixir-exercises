@@ -1,4 +1,35 @@
 defmodule Solution do
+  # 17/50
+  def check_row({a, b, c}) do
+    valid_cell = [:x, :o, :f]
+
+    if a in valid_cell and b in valid_cell and c in valid_cell do
+      true
+    else
+      false
+    end
+  end
+
+  def check_row(_) do
+    IO.puts("check row _")
+    false
+  end
+
+  def valid_game?(state) do
+    {row1, row2, row3} = state
+    # IO.puts(inspect(row1))
+    # IO.puts(inspect(row2))
+    # IO.puts(inspect(row3))
+    #
+    check_row(row1) and
+      check_row(row2) and
+      check_row(row3)
+  end
+
+  def check_who_win(state) do
+    :no_win
+  end
+
   # 16/50
   def single_win?(a_win, b_win) do
     cond do
