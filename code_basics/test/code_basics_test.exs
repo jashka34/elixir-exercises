@@ -5,14 +5,14 @@ defmodule CodeBasicsTest do
   doctest CodeBasics
 
   # 16/50
-  test "single_win? test" do
+  test "16/50 single_win? test" do
     assert single_win?(true, false)
     assert single_win?(false, true)
     assert not single_win?(true, true)
     assert not single_win?(false, false)
   end
 
-  test "double_win? test" do
+  test "16/50 double_win? test" do
     assert :ab == double_win?(true, true, false)
     assert :bc == double_win?(false, true, true)
     assert :ac == double_win?(true, false, true)
