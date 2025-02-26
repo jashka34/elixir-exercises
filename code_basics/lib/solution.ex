@@ -28,8 +28,37 @@ defmodule Solution do
   end
 
   def check_who_win(state) do
-    :no_win
+    case state do
+      {{:x, :x, :x}, {_, _, _}, {_, _, _}} -> {:win, :x}
+      {{_, _, _}, {:x, :x, :x}, {_, _, _}} -> {:win, :x}
+      {{_, _, _}, {_, _, _}, {:x, :x, :x}} -> {:win, :x}
+      {{:x, _, _}, {:x, _, _}, {:x, _, _}} -> {:win, :x}
+      {{_, :x, _}, {_, :x, _}, {_, :x, _}} -> {:win, :x}
+      {{_, _, :x}, {_, _, :x}, {_, _, :x}} -> {:win, :x}
+      {{:x, _, _}, {_, :x, _}, {_, _, :x}} -> {:win, :x}
+      {{_, _, :x}, {_, :x, _}, {:x, _, _}} -> {:win, :x}
+      {{:o, :o, :o}, {_, _, _}, {_, _, _}} -> {:win, :o}
+      {{_, _, _}, {:o, :o, :o}, {_, _, _}} -> {:win, :o}
+      {{_, _, _}, {_, _, _}, {:o, :o, :o}} -> {:win, :o}
+      {{:o, _, _}, {:o, _, _}, {:o, _, _}} -> {:win, :o}
+      {{_, :o, _}, {_, :o, _}, {_, :o, _}} -> {:win, :o}
+      {{_, _, :o}, {_, _, :o}, {_, _, :o}} -> {:win, :o}
+      {{:o, _, _}, {_, :o, _}, {_, _, :o}} -> {:win, :o}
+      {{_, _, :o}, {_, :o, _}, {:o, _, _}} -> {:win, :o}
+      _ -> :no_win
+    end
   end
+
+  # решение учителя
+  # def check_who_win({{c, c, c}, _, _}) when c != :f, do: {:win, c}
+  # def check_who_win({_, {c, c, c}, _}) when c != :f, do: {:win, c}
+  # def check_who_win({_, _, {c, c, c}}) when c != :f, do: {:win, c}
+  # def check_who_win({{c, _, _}, {c, _, _}, {c, _, _}}) when c != :f, do: {:win, c}
+  # def check_who_win({{_, c, _}, {_, c, _}, {_, c, _}}) when c != :f, do: {:win, c}
+  # def check_who_win({{_, _, c}, {_, _, c}, {_, _, c}}) when c != :f, do: {:win, c}
+  # def check_who_win({{c, _, _}, {_, c, _}, {_, _, c}}) when c != :f, do: {:win, c}
+  # def check_who_win({{_, _, c}, {_, c, _}, {c, _, _}}) when c != :f, do: {:win, c}
+  # def check_who_win(_), do: :no_win
 
   # 16/50
   def single_win?(a_win, b_win) do
