@@ -4,26 +4,27 @@ defmodule Solution do
     valid_cell = [:x, :o, :f]
 
     if a in valid_cell and b in valid_cell and c in valid_cell do
+      # dbg("valid" <> inspect({a, b, c}))
       true
     else
+      # dbg("NOT valid" <> inspect({a, b, c}))
       false
     end
   end
 
   def check_row(_) do
-    IO.puts("check row _")
+    # dbg("check_row FALSE!")
     false
   end
 
-  def valid_game?(state) do
-    {row1, row2, row3} = state
-    # IO.puts(inspect(row1))
-    # IO.puts(inspect(row2))
-    # IO.puts(inspect(row3))
-    #
+  def valid_game?({row1, row2, row3}) do
     check_row(row1) and
       check_row(row2) and
       check_row(row3)
+  end
+
+  def valid_game?(_) do
+    false
   end
 
   def check_who_win(state) do
