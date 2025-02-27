@@ -4,6 +4,13 @@ defmodule CodeBasicsTest do
   import Solution
   doctest CodeBasics
 
+  # 19/50
+  test "19/50 range" do
+    assert [1, 2, 3, 4, 5] == range(1, 5)
+    assert [2] == range(2, 2)
+    assert [] == range(3, 2)
+  end
+
   # 18/50
   test "18/50 my cool string" do
     assert "my cool strmy cool str" = my_cool_string(" mY COOl Str    ", 2)

@@ -1,4 +1,29 @@
 defmodule Solution do
+  # 19/50
+
+  # переделать на решение учителя, оно короче 
+
+  def range(from, to) do
+    cond do
+      from > to -> []
+      from == to -> [from]
+      true -> range(from, to - 1, [to])
+    end
+  end
+
+  def range(from, to, acc) do
+    # dbg("----")
+    # dbg(from)
+    # dbg(to)
+    # dbg(acc)
+
+    if from == to do
+      [from | acc]
+    else
+      range(from, to - 1, [to | acc])
+    end
+  end
+
   # 18/50
   def my_cool_string(s, n) do
     s |> String.trim() |> String.downcase() |> String.duplicate(n)
