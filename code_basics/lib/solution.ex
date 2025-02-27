@@ -1,7 +1,7 @@
 defmodule Solution do
   # 18/50
   def my_cool_string(s, n) do
-    s
+    s |> String.trim() |> String.downcase() |> String.duplicate(n)
   end
 
   # 17/50

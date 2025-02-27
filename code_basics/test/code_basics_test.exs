@@ -6,8 +6,8 @@ defmodule CodeBasicsTest do
 
   # 18/50
   test "18/50 my cool string" do
-    assert "my cool strmycool str" = Solution.my_cool_string(" mY COOl Str    ")
-    assert "" = Solution.my_cool_string("    ")
+    assert "my cool strmy cool str" = my_cool_string(" mY COOl Str    ", 2)
+    assert "" = Solution.my_cool_string("    ", 2)
   end
 
   # 17/50
