@@ -4,6 +4,12 @@ defmodule CodeBasicsTest do
   import Solution
   doctest CodeBasics
 
+  # 18/50
+  test "18/50 my cool string" do
+    assert "my cool strmycool str" = Solution.my_cool_string(" mY COOl Str    ")
+    assert "" = Solution.my_cool_string("    ")
+  end
+
   # 17/50
   test "17/50 valid_game? positive test" do
     assert valid_game?({{:x, :x, :x}, {:x, :x, :x}, {:x, :x, :x}})
