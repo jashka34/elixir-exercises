@@ -4,6 +4,28 @@ defmodule CodeBasicsTest do
   import Solution
   doctest CodeBasics
 
+  # 20/50
+  test "20/50 recur and accums" do
+    users = [
+      {:user, 1, "Bob", 23},
+      {:user, 2, "Helen", 20},
+      {:user, 3, "Bill", 15},
+      {:user, 4, "Kate", 14}
+    ]
+
+    assert filter_by_age(users, 16) == [{:user, 1, "Bob", 23}, {:user, 2, "Helen", 20}]
+
+    assert filter_by_age(users, 14) == [
+             {:user, 1, "Bob", 23},
+             {:user, 2, "Helen", 20},
+             {:user, 3, "Bill", 15}
+           ]
+
+    assert filter_by_age(users, 22) == [
+             {:user, 1, "Bob", 23}
+           ]
+  end
+
   # 19/50
   test "19/50 range" do
     assert [1, 2, 3, 4, 5] == range(1, 5)
@@ -14,7 +36,7 @@ defmodule CodeBasicsTest do
   # 18/50
   test "18/50 my cool string" do
     assert "my cool strmy cool str" = my_cool_string(" mY COOl Str    ", 2)
-    assert "" = Solution.my_cool_string("    ", 2)
+    assert "" = my_cool_string("    ", 2)
   end
 
   # 17/50
@@ -117,32 +139,32 @@ defmodule CodeBasicsTest do
     bob = {:user, "Bob", 42}
     helen = {:user, "Helen", 20}
     kate = {:user, "Kate", 22}
-    assert 42 == Solution.get_age(bob)
-    assert 20 == Solution.get_age(helen)
-    assert 22 == Solution.get_age(kate)
-    assert ["Bob", "Helen", "Kate"] == Solution.get_names([bob, helen, kate])
+    assert 42 == get_age(bob)
+    assert 20 == get_age(helen)
+    assert 22 == get_age(kate)
+    assert ["Bob", "Helen", "Kate"] == get_names([bob, helen, kate])
   end
 
   test "12/50 maps" do
     map = %{a: 1, b: 2, c: 42}
-    assert Solution.keys_sum(map, :a, :b) == 3
-    assert Solution.keys_sum(map, :a, :c) == 43
-    assert Solution.keys_sum(map, :c, :b) == 44
-    assert Solution.keys_sum(map, :a, :d) == 1
+    assert keys_sum(map, :a, :b) == 3
+    assert keys_sum(map, :a, :c) == 43
+    assert keys_sum(map, :c, :b) == 44
+    assert keys_sum(map, :a, :d) == 1
 
     map = %{one: 1, five: 5, ten: 10}
-    assert Solution.keys_product(map, :one, :five) == 5
-    assert Solution.keys_product(map, :five, :ten) == 50
-    assert Solution.keys_product(map, :two, :ten) == 10
+    assert keys_product(map, :one, :five) == 5
+    assert keys_product(map, :five, :ten) == 50
+    assert keys_product(map, :two, :ten) == 10
 
     map1 = %{a: 1, b: 2}
     map2 = %{c: 3, d: 4}
 
-    assert Solution.copy_key(map1, map2, :a, 42) == %{c: 3, d: 4, a: 1}
-    assert Solution.copy_key(map1, map2, :b, 42) == %{c: 3, d: 4, b: 2}
+    assert copy_key(map1, map2, :a, 42) == %{c: 3, d: 4, a: 1}
+    assert copy_key(map1, map2, :b, 42) == %{c: 3, d: 4, b: 2}
 
-    assert Solution.copy_key(map2, map1, :d, 42) == %{a: 1, b: 2, d: 4}
-    assert Solution.copy_key(map2, map1, :e, 42) == %{a: 1, b: 2, e: 42}
+    assert copy_key(map2, map1, :d, 42) == %{a: 1, b: 2, d: 4}
+    assert copy_key(map2, map1, :e, 42) == %{a: 1, b: 2, e: 42}
   end
 
   test "11/50 lists" do

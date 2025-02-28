@@ -1,28 +1,38 @@
 defmodule Solution do
+  # 20/50
+  def filter_by_age(users, age) do
+    []
+  end
+
   # 19/50
-
   # переделать на решение учителя, оно короче 
-
-  def range(from, to) do
-    cond do
-      from > to -> []
-      from == to -> [from]
-      true -> range(from, to - 1, [to])
-    end
+  def range(from, to) when from <= to do
+    [from | range(from + 1, to)]
   end
 
-  def range(from, to, acc) do
-    # dbg("----")
-    # dbg(from)
-    # dbg(to)
-    # dbg(acc)
+  def range(_, _), do: []
 
-    if from == to do
-      [from | acc]
-    else
-      range(from, to - 1, [to | acc])
-    end
-  end
+  # моё решение "с ходу"
+  # def range(from, to) do
+  #   cond do
+  #     from > to -> []
+  #     from == to -> [from]
+  #     true -> range(from, to - 1, [to])
+  #   end
+  # end
+  #
+  # def range(from, to, acc) do
+  #   # dbg("----")
+  #   # dbg(from)
+  #   # dbg(to)
+  #   # dbg(acc)
+  #
+  #   if from == to do
+  #     [from | acc]
+  #   else
+  #     range(from, to - 1, [to | acc])
+  #   end
+  # end
 
   # 18/50
   def my_cool_string(s, n) do
