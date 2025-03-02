@@ -1,7 +1,22 @@
 defmodule Solution do
   # 20/50
-  def filter_by_age(users, age) do
-    []
+  def filter_by_age(users, max_age) do
+    filter_by_age(users, max_age, [])
+  end
+
+  defp filter_by_age([], _, acc), do: Enum.reverse(acc)
+
+  defp filter_by_age([user | users], max_age, acc) do
+    {:user, _, _, age} = user
+    # dbg(user)
+    # dbg(users)
+    # dbg(acc)
+
+    if age > max_age do
+      filter_by_age(users, max_age, [user | acc])
+    else
+      filter_by_age(users, max_age, acc)
+    end
   end
 
   # 19/50
