@@ -1,11 +1,11 @@
 defmodule Solution do
   # 21/50 
   def encode(chlist, shift) do
-    ""
+    Enum.map(chlist, fn ch -> ch + shift end)
   end
 
   def decode(chlist, shift) do
-    ""
+    Enum.map(chlist, fn ch -> ch - shift end)
   end
 
   # 20/50
