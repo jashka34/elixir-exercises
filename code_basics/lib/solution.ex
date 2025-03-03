@@ -1,4 +1,20 @@
 defmodule Solution do
+  # 22/50 
+  def calculate(op, a, b) do
+    fpls = fn x, y -> x + y end
+    fdif = fn x, y -> x - y end
+    fmul = fn x, y -> x * y end
+    fdiv = fn x, y -> x / y end
+
+    case op do
+      "+" -> fpls.(a, b)
+      "-" -> fdif.(a, b)
+      "*" -> fmul.(a, b)
+      "/" -> fdiv.(a, b)
+      _ -> nil
+    end
+  end
+
   # 21/50 
   def encode(chlist, shift) do
     Enum.map(chlist, fn ch -> ch + shift end)

@@ -4,6 +4,18 @@ defmodule CodeBasicsTest do
   import Solution
   doctest CodeBasics
 
+  # 22/50
+  test "21/50 anonim func" do
+    assert calculate("+", 2, 3) == 5
+    assert calculate("+", 0, -3) == -3
+    assert calculate("-", 2, 3) == -1
+    assert calculate("-", 0, 3) == -3
+    assert calculate("/", 4, 4) == 1.0
+    assert calculate("/", 3, 2) == 1.5
+    assert calculate("*", 2, 2) == 4
+    assert calculate("*", 0, 2) == 0
+  end
+
   # 21/50
   test "20/50 immut struct" do
     assert encode(~c"Hello", 10) == ~c"Rovvy"
