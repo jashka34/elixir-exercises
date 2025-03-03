@@ -4,6 +4,14 @@ defmodule CodeBasicsTest do
   import Solution
   doctest CodeBasics
 
+  # 21/50
+  test "20/50 immut struct" do
+    assert encode(~c"Hello", 10) == ~c"Rovvy"
+    assert encode(~c"Hello", 5) == ~c"Mjqqt"
+    assert decode(~c"Rovvy", 10) == ~c"Hello"
+    assert decode(~c"Mjqqt", 5) == ~c"Hello"
+  end
+
   # 20/50
   test "20/50 recur and accums" do
     users = [

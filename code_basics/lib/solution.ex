@@ -1,4 +1,13 @@
 defmodule Solution do
+  # 21/50 
+  def encode(chlist, shift) do
+    ""
+  end
+
+  def decode(chlist, shift) do
+    ""
+  end
+
   # 20/50
   def filter_by_age(users, max_age) do
     filter_by_age(users, max_age, [])
