@@ -1,18 +1,23 @@
 defmodule Solution do
   # 22/50 
   def calculate(op, a, b) do
-    fpls = fn x, y -> x + y end
-    fdif = fn x, y -> x - y end
-    fmul = fn x, y -> x * y end
-    fdiv = fn x, y -> x / y end
+    # fpls = fn x, y -> x + y end
+    # fdif = fn x, y -> x - y end
+    # fmul = fn x, y -> x * y end
+    # fdiv = fn x, y -> x / y end
+    # case op do
+    #   "+" -> fpls.(a, b)
+    #   "-" -> fdif.(a, b)
+    #   "*" -> fmul.(a, b)
+    #   "/" -> fdiv.(a, b)
+    #   _ -> nil
+    # end
 
-    case op do
-      "+" -> fpls.(a, b)
-      "-" -> fdif.(a, b)
-      "*" -> fmul.(a, b)
-      "/" -> fdiv.(a, b)
-      _ -> nil
+    fzn = fn zn ->
+      Map.get(%{"+" => &(&1 + &2), "-" => &(&1 - &2), "*" => &(&1 * &2), "/" => &(&1 / &2)}, zn)
     end
+
+    fzn.(op).(a, b)
   end
 
   # 21/50 
