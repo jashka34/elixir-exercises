@@ -3,6 +3,14 @@ defmodule CodeBasicsTest do
   import ExUnit.CaptureIO
   import Solution
 
+  # 24/50
+  test "24/50 filter" do
+    assert inc_numbers([]) == []
+    assert inc_numbers(["foo", false, ["foo"]]) == []
+    assert inc_numbers([10, "foo", false, true, ["foo"], 1.2, %{}, 32]) == [11, 2.2, 33]
+    assert inc_numbers([1, 2, 3, 4, 5, 6.0]) == [2, 3, 4, 5, 6, 7.0]
+  end
+
   # 23/50
   test "23/50 map" do
     assert zip([], []) == []

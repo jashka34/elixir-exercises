@@ -1,29 +1,42 @@
 defmodule Solution do
-  # 23/50
-  # переделать на решение учителя - более короткое, мап по ренжу 0 до максимального из длин списков
-  def zip(n1, n2) do
-    z =
-      &(0..(length(&1) - 1)
-        |> Enum.map(fn x -> [Enum.at(&1, x), Enum.at(&2, x)] end))
-
-    cond do
-      length(n1) == 0 and length(n2) == 0 ->
-        []
-
-      length(n1) > length(n2) ->
-        n22 = n2 ++ List.duplicate(nil, length(n1) - length(n2))
-        # dbg(n22)
-        z.(n1, n22)
-
-      length(n2) > length(n1) ->
-        n11 = n1 ++ List.duplicate(nil, length(n2) - length(n1))
-        # dbg(n11)
-        z.(n11, n2)
-
-      true ->
-        z.(n1, n2)
-    end
+  # 24/50
+  def inc_numbers(list) do
+    []
   end
+
+  # 23/50
+  def zip([], []), do: []
+
+  def zip(n1, n2) do
+    maxlen = max(length(n1), length(n2))
+
+    0..(maxlen - 1)
+    |> Enum.map(fn i -> [Enum.at(n1, i), Enum.at(n2, i)] end)
+  end
+
+  # def zip(n1, n2) do
+  #   z =
+  #     &(0..(length(&1) - 1)
+  #       |> Enum.map(fn x -> [Enum.at(&1, x), Enum.at(&2, x)] end))
+  #
+  #   cond do
+  #     length(n1) == 0 and length(n2) == 0 ->
+  #       []
+  #
+  #     length(n1) > length(n2) ->
+  #       n22 = n2 ++ List.duplicate(nil, length(n1) - length(n2))
+  #       # dbg(n22)
+  #       z.(n1, n22)
+  #
+  #     length(n2) > length(n1) ->
+  #       n11 = n1 ++ List.duplicate(nil, length(n2) - length(n1))
+  #       # dbg(n11)
+  #       z.(n11, n2)
+  #
+  #     true ->
+  #       z.(n1, n2)
+  #   end
+  # end
 
   # 22/50 
   def calculate(op, a, b) do
