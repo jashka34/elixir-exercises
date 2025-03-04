@@ -2,10 +2,19 @@ defmodule CodeBasicsTest do
   use ExUnit.Case
   import ExUnit.CaptureIO
   import Solution
-  # doctest CodeBasics
+
+  # 23/50
+  test "23/50 map" do
+    assert zip([], []) == []
+    assert zip([1, 2, 3, 4], [5, 6, 7, 8]) == [[1, 5], [2, 6], [3, 7], [4, 8]]
+    assert zip([1, 2], [3, 4]) == [[1, 3], [2, 4]]
+    assert zip([1, 2], [3]) == [[1, 3], [2, nil]]
+    assert zip([1], [3, 4]) == [[1, 3], [nil, 4]]
+    assert zip([], [3, 4]) == [[nil, 3], [nil, 4]]
+  end
 
   # 22/50
-  test "21/50 anonim func" do
+  test "21/50 anonym func" do
     assert calculate("+", 2, 3) == 5
     assert calculate("+", 0, -3) == -3
     assert calculate("-", 2, 3) == -1
