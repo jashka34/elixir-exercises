@@ -3,6 +3,13 @@ defmodule CodeBasicsTest do
   import ExUnit.CaptureIO
   import Solution
 
+  # 25/50
+  test "25/50 reduce" do
+    assert max_delta([], []) == 0
+    assert max_delta([10, -15, 35], [2, -12, 42]) == 8
+    assert max_delta([-5], [-15]) == 10
+  end
+
   # 24/50
   test "24/50 filter" do
     assert inc_numbers([]) == []

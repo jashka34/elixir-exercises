@@ -1,4 +1,15 @@
 defmodule Solution do
+  # 25/50
+  def max_delta([], []), do: 0
+
+  def max_delta(l1, l2) do
+    maxlen = max(length(l1), length(l2))
+
+    0..(maxlen - 1)
+    |> Enum.map(&[Enum.at(l1, &1), Enum.at(l2, &1)])
+    |> Enum.reduce(0, fn [n1, n2], acc -> max(acc, abs(n1 - n2)) end)
+  end
+
   # 24/50
   def inc_numbers(list) do
     list
