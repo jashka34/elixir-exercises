@@ -1,7 +1,9 @@
 defmodule Solution do
   # 24/50
   def inc_numbers(list) do
-    []
+    list
+    |> Enum.filter(fn x -> is_number(x) end)
+    |> Enum.map(fn x -> x + 1 end)
   end
 
   # 23/50
