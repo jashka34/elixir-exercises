@@ -1,4 +1,17 @@
 defmodule Solution do
+  # 26/50
+  def fetch_gamers(employees) do
+    # dbg(employees)
+    lst =
+      for %{name: _name, status: :active, hobbies: hobbies} = emp <- employees,
+          Enum.any?(hobbies, &(&1.type == :gaming)),
+          do: emp
+
+    dbg(lst)
+    # []
+    lst
+  end
+
   # 25/50
   def max_delta([], []), do: 0
 

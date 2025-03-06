@@ -3,6 +3,37 @@ defmodule CodeBasicsTest do
   import ExUnit.CaptureIO
   import Solution
 
+  # 26/50
+
+  test "26/50 comprehensions" do
+    employees = [
+      %{
+        name: "Eric",
+        status: :active,
+        hobbies: [%{name: "Text Adventures", type: :gaming}, %{name: "Chickens", type: :animals}]
+      },
+      %{
+        name: "Mitch",
+        status: :former,
+        hobbies: [%{name: "Woodworking", type: :making}, %{name: "Homebrewing", type: :making}]
+      },
+      %{
+        name: "Greg",
+        status: :active,
+        hobbies: [
+          %{name: "Dungeons & Dragons", type: :gaming},
+          %{name: "Woodworking", type: :making}
+        ]
+      }
+    ]
+
+    assert fetch_gamers(employees) ==
+             [
+               {"Eric", %{name: "Text Adventures", type: :gaming}},
+               {"Greg", %{name: "Dungeons & Dragons", type: :gaming}}
+             ]
+  end
+
   # 25/50
   test "25/50 reduce" do
     assert max_delta([], []) == 0
