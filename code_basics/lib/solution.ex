@@ -3,12 +3,11 @@ defmodule Solution do
   def fetch_gamers(employees) do
     # dbg(employees)
     lst =
-      for %{name: _name, status: :active, hobbies: hobbies} = emp <- employees,
+      for %{name: name, status: :active, hobbies: hobbies} <- employees,
           Enum.any?(hobbies, &(&1.type == :gaming)),
-          do: emp
+          do: {name, Enum.find(hobbies, fn n -> n.type == :gaming end)}
 
-    dbg(lst)
-    # []
+    # dbg(lst)
     lst
   end
 
