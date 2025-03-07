@@ -3,8 +3,13 @@ defmodule CodeBasicsTest do
   import ExUnit.CaptureIO
   import Solution
 
-  # 26/50
+  # 27/50
+  test "27/50 stream" do
+    # так неверно, переделать проверку на то что элементы is_number, они в диапазоне 1..20 
+    # assert [_, _, _, _, _] == generate(5)
+  end
 
+  # 26/50
   test "26/50 comprehensions" do
     employees = [
       %{

@@ -1,4 +1,9 @@
 defmodule Solution do
+  # 27/50
+  def generate(n) do
+    []
+  end
+
   # 26/50
   def fetch_gamers(employees) do
     # dbg(employees)
