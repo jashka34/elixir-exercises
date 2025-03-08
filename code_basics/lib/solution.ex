@@ -1,7 +1,9 @@
 defmodule Solution do
   # 27/50
   def generate(n) do
-    []
+    rng = 1..20
+    unf = fn r -> {r, Enum.random(rng)} end
+    Stream.unfold(Enum.random(rng), unf) |> Enum.take(n)
   end
 
   # 26/50

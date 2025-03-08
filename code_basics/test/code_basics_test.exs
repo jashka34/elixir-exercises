@@ -5,8 +5,24 @@ defmodule CodeBasicsTest do
 
   # 27/50
   test "27/50 stream" do
-    # так неверно, переделать проверку на то что элементы is_number, они в диапазоне 1..20 
-    # assert [_, _, _, _, _] == generate(5)
+    g5 = generate(5)
+    g15 = generate(15)
+    g30 = generate(30)
+
+    assert check_random(g5, 5)
+    assert check_random(g15, 15)
+    assert check_random(g30, 30)
+  end
+
+  defp check_random(list, count) do
+    count_ok = count == length(list)
+
+    all_elem_is_number_and_in_range =
+      list
+      |> Enum.map(fn x -> is_number(x) and x in 1..20 end)
+      |> Enum.all?()
+
+    count_ok and all_elem_is_number_and_in_range
   end
 
   # 26/50
