@@ -2,6 +2,15 @@ defmodule CodeBasicsTest do
   use ExUnit.Case
   import ExUnit.CaptureIO
   import Solution
+  import Pet
+  import User
+
+  # 28/50
+  test "28/50 structs" do
+    assert calculate_stats([]) == %{humans: 0, pets: 0}
+    assert calculate_stats([%User{}, %User{}, %Pet{}]) == %{humans: 2, pets: 1}
+    assert calculate_stats([%Pet{}, %Pet{}, %Pet{}]) == %{humans: 0, pets: 3}
+  end
 
   # 27/50
   test "27/50 stream" do

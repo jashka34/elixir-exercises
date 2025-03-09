@@ -1,9 +1,30 @@
+import Pet
+import User
+
 defmodule Solution do
+  # 28/50
+  @default_humans_and_pets_counter %{humans: 0, pets: 0}
+  def calculate_stats(list) do
+    counter =
+      list
+      |> Enum.reduce(@default_humans_and_pets_counter, fn x, acc ->
+        case x do
+          %User{} ->
+            %{humans: acc.humans + 1, pets: acc.pets}
+
+          %Pet{} ->
+            %{humans: acc.humans, pets: acc.pets + 1}
+        end
+      end)
+
+    counter
+  end
+
   # 27/50
+  @rng20 1..20
   def generate(n) do
-    rng = 1..20
-    unf = fn r -> {r, Enum.random(rng)} end
-    Stream.unfold(Enum.random(rng), unf) |> Enum.take(n)
+    unf = fn r -> {r, Enum.random(@rng20)} end
+    Stream.unfold(Enum.random(@rng20), unf) |> Enum.take(n)
   end
 
   # 26/50
@@ -12,7 +33,7 @@ defmodule Solution do
     lst =
       for %{name: name, status: :active, hobbies: hobbies} <- employees,
           Enum.any?(hobbies, &(&1.type == :gaming)),
-          do: {name, Enum.find(hobbies, fn n -> n.type == :gaming end)}
+          do: {name, Enum.find(hobbies, fn emp -> emp.type == :gaming end)}
 
     # dbg(lst)
     lst
