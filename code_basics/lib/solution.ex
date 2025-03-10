@@ -4,6 +4,10 @@ import User
 defmodule Solution do
   # 29/50
   def generate_pets(n) do
+    ret = Stream.unfold("Ololo 1", fn x -> "Ololo #{x}" end) |> Enum.take(n)
+
+    dbg(ret)
+
     []
   end
 

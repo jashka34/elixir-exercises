@@ -6,7 +6,24 @@ defmodule CodeBasicsTest do
   import User
 
   # 29/50
-  test "29/50 types" do
+  describe "29/50 generate_pets work" do
+    test "with valid input" do
+      pets = Solution.generate_pets(10)
+
+      assert is_list(pets)
+
+      Enum.each(Enum.with_index(pets), fn {pet, index} ->
+        assert is_struct(pet, Pet)
+        assert pet.name == "Barkley #{index}"
+      end)
+    end
+
+    test "with invalid input" do
+      pets = Solution.generate_pets(-20)
+
+      assert is_list(pets)
+      assert Enum.empty?(pets)
+    end
   end
 
   # 28/50
