@@ -3,12 +3,12 @@ import User
 
 defmodule Solution do
   # 29/50
+  @spec generate_pets(integer()) :: list(Pet.t()) | list()
+  def generate_pets(n) when n < 0, do: []
+
   def generate_pets(n) do
-    ret = Stream.unfold("Ololo 1", fn x -> "Ololo #{x}" end) |> Enum.take(n)
-
-    dbg(ret)
-
-    []
+    0..(n - 1)
+    |> Enum.map(fn n -> %Pet{name: "Barkley #{n}"} end)
   end
 
   # 28/50

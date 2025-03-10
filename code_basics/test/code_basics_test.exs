@@ -8,7 +8,7 @@ defmodule CodeBasicsTest do
   # 29/50
   describe "29/50 generate_pets work" do
     test "with valid input" do
-      pets = Solution.generate_pets(10)
+      pets = Solution.generate_pets(3)
 
       assert is_list(pets)
 
