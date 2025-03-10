@@ -5,6 +5,10 @@ defmodule CodeBasicsTest do
   import Pet
   import User
 
+  # 29/50
+  test "29/50 types" do
+  end
+
   # 28/50
   test "28/50 structs" do
     assert calculate_stats([]) == %{humans: 0, pets: 0}

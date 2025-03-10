@@ -2,6 +2,11 @@ import Pet
 import User
 
 defmodule Solution do
+  # 29/50
+  def generate_pets(n) do
+    []
+  end
+
   # 28/50
   @default_humans_and_pets_counter %{humans: 0, pets: 0}
   def calculate_stats(list) do
