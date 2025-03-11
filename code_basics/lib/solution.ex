@@ -1,7 +1,34 @@
 import Pet
 import User
+import Parser
+# import TextParser
 
 defmodule Solution do
+  # 30/50
+  @behaviour Parser
+  @impl Parser
+
+  @spec parse(String.t()) :: {:ok, any} | {:error, atom}
+  def parse(s) do
+    cond do
+      s == "" -> {:error, :no_text}
+      true -> {:error, :no_impl}
+    end
+  end
+
+  @impl Parser
+  def extensions do
+    [".txt"]
+  end
+
+  # def parse_text(s) do
+  #   TextParser.parse(s)
+  # end
+  #
+  # def extentions_text() do
+  #   TextParser.extensions()
+  # end
+
   # 29/50
   @spec generate_pets(integer()) :: list(Pet.t()) | list()
   def generate_pets(n) when n < 0, do: []
