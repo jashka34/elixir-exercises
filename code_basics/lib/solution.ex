@@ -6,28 +6,17 @@ import Parser
 defmodule Solution do
   # 30/50
   @behaviour Parser
-  @impl Parser
 
+  @impl Parser
   @spec parse(String.t()) :: {:ok, any} | {:error, atom}
-  def parse(s) do
-    cond do
-      s == "" -> {:error, :no_text}
-      true -> {:error, :no_impl}
-    end
-  end
+  def parse(""), do: {:error, :no_text}
+  def parse(s), do: {:ok, String.split(s, "\n")}
 
   @impl Parser
+  @spec extensions() :: [String.t()]
   def extensions do
     [".txt"]
   end
-
-  # def parse_text(s) do
-  #   TextParser.parse(s)
-  # end
-  #
-  # def extentions_text() do
-  #   TextParser.extensions()
-  # end
 
   # 29/50
   @spec generate_pets(integer()) :: list(Pet.t()) | list()
