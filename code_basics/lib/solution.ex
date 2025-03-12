@@ -3,9 +3,9 @@
 # import Parser
 
 defmodule Solution do
-  # 31/50
-  def say_something(s) do
-    Teller.say_something(s)
+  # 31/50 32/50 реализация в teller.ex
+  def say_something(_s) do
+    # Teller.say_something(_s)
   end
 
   # 30/50

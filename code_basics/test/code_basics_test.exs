@@ -2,14 +2,24 @@ defmodule CodeBasicsTest do
   use ExUnit.Case
   import ExUnit.CaptureIO
   import Solution
-  # import Pet
-  # import User
+
+  # 32/50
+  test "32/50 protocols common" do
+    assert Teller.impl_for(%Human{}) == Teller.Human
+    assert Teller.say_something(%Human{name: "John"}) == "Hello, world!"
+    assert Teller.impl_for(%Dog{}) == Teller.Dog
+    assert Teller.say_something(%Dog{name: "Barkinson"}) == "Bark, world!"
+    assert Teller.impl_for(%Cat{}) == Teller.Cat
+    assert Teller.say_something(%Cat{name: "Meowington"}) == "Meow, world!"
+    assert Teller.impl_for(%Robot{}) == Teller.Any
+    assert Teller.say_something(%Robot{name: "Roberto"}) == "World!"
+  end
 
   # 31/50
   test "31/50 protocols" do
-    assert say_something(%Human{name: "John"}) == "Hello, world!"
-    assert say_something(%Dog{name: "Barkinson"}) == "Bark, world!"
-    assert say_something(%Cat{name: "Meowington"}) == "Meow, world!"
+    assert Teller.say_something(%Human{name: "John"}) == "Hello, world!"
+    assert Teller.say_something(%Dog{name: "Barkinson"}) == "Bark, world!"
+    assert Teller.say_something(%Cat{name: "Meowington"}) == "Meow, world!"
   end
 
   # 30/50
