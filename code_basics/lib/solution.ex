@@ -1,9 +1,13 @@
-import Pet
-import User
-import Parser
-# import TextParser
+# import Pet
+# import User
+# import Parser
 
 defmodule Solution do
+  # 31/50
+  def say_something(s) do
+    Teller.say_something(s)
+  end
+
   # 30/50
   @behaviour Parser
 
