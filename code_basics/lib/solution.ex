@@ -3,6 +3,15 @@
 # import Parser
 
 defmodule Solution do
+  # 33/50
+  # Решение учителя: гард на функции "when y == 0, do: raise(<то что у меня ниже>)" и вторая фунция уже возвращает x/y
+  def my_div(x, y) do
+    x / y
+  rescue
+    ArithmeticError ->
+      raise ArgumentError, message: "Divide #{x} by zero is prohibited!"
+  end
+
   # 31/50 32/50 реализация в teller.ex
   # def say_something(s) do
   # Teller.say_something(_s)
