@@ -3,12 +3,20 @@ defmodule CodeBasicsTest do
   import ExUnit.CaptureIO
   import Solution
 
+  # 35/50
+  test "35/50 with" do
+    assert validate("some") == {:ok, "some"}
+    assert validate("hello!!") == {:ok, "hello!!"}
+    assert validate(1) == {:error, :not_binary}
+    assert validate("a") == {:error, :too_short}
+    assert validate("hello, world!") == {:error, :too_long}
+  end
+
   # 34/50
   test "34/50 compare" do
     assert compare(2, 3) == {:ok, :less}
     assert compare(3, 3) == {:ok, :equal}
     assert compare(4, 3) == {:ok, :greater}
-
     assert compare("", 3) == {:error, :not_number}
     assert compare(2, []) == {:error, :not_number}
   end

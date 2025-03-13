@@ -3,6 +3,11 @@
 # import Parser
 
 defmodule Solution do
+  # 35/50
+  def validate(x) do
+    {:ok, x}
+  end
+
   # 34/50
   def compare(x, y) when not is_number(x) or not is_number(y), do: {:error, :not_number}
   def compare(x, y) when x < y, do: {:ok, :less}
