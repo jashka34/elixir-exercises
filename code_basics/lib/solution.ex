@@ -3,6 +3,12 @@
 # import Parser
 
 defmodule Solution do
+  # 34/50
+  def compare(x, y) when not is_number(x) or not is_number(y), do: {:error, :not_number}
+  def compare(x, y) when x < y, do: {:ok, :less}
+  def compare(x, y) when x == y, do: {:ok, :equal}
+  def compare(x, y) when x > y, do: {:ok, :greater}
+
   # 33/50
   # Решение учителя: гард на функции "when y == 0, do: raise(<то что у меня ниже>)" и вторая фунция уже возвращает x/y
   def my_div(x, y) do

@@ -3,8 +3,18 @@ defmodule CodeBasicsTest do
   import ExUnit.CaptureIO
   import Solution
 
+  # 34/50
+  test "34/50 compare" do
+    assert compare(2, 3) == {:ok, :less}
+    assert compare(3, 3) == {:ok, :equal}
+    assert compare(4, 3) == {:ok, :greater}
+
+    assert compare("", 3) == {:error, :not_number}
+    assert compare(2, []) == {:error, :not_number}
+  end
+
   # 33/50
-  test "my_div work" do
+  test "33/50 my_div work" do
     assert_raise(ArgumentError, "Divide 10 by zero is prohibited!", fn ->
       my_div(10, 0)
     end)
