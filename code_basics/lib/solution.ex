@@ -1,11 +1,20 @@
-# import Pet
-# import User
-# import Parser
-
 defmodule Solution do
   # 35/50
   def validate(x) do
-    {:ok, x}
+    with true <- check_is_string(x) do
+      {:ok, x}
+    else
+      reason -> {:error, reason}
+    end
+  end
+
+  defp check_is_string(x) do
+    cond do
+      not is_bitstring(x) -> :not_binary
+      String.length(x) < 2 -> :too_short
+      String.length(x) > 8 -> :too_long
+      true -> true
+    end
   end
 
   # 34/50
