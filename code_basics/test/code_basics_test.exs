@@ -2,6 +2,11 @@ defmodule CodeBasicsTest do
   use ExUnit.Case
   import ExUnit.CaptureIO
   import Solution
+  # 36/50
+  test "36/50 run_in_process work" do
+    assert Solution.run_in_process(fn -> 2 + 2 end) |> is_pid()
+    assert Solution.run_in_process(fn -> "hello world" end) |> is_pid()
+  end
 
   # 35/50
   test "35/50 with" do

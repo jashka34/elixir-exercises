@@ -1,4 +1,9 @@
 defmodule Solution do
+  # 36/50
+  def run_in_process(f) do
+    spawn(f)
+  end
+
   # 35/50
   def validate(x) do
     with true <- check_is_string(x) do
