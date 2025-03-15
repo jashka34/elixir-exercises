@@ -1,4 +1,9 @@
 defmodule Solution do
+  # 37/50
+  def calculate(f) do
+    0
+  end
+
   # 36/50
   def run_in_process(f) do
     spawn(f)

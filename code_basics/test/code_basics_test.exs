@@ -2,7 +2,30 @@ defmodule CodeBasicsTest do
   use ExUnit.Case
   import ExUnit.CaptureIO
   import Solution
+
+  test "37/50 calculator process work" do
+    parent = self()
+    calculator = spawn(fn -> Solution.calculate(parent) end)
+
+    send(calculator, {:+, [2, 5]})
+    assert_receive({:ok, 7})
+    assert Process.alive?(calculator)
+
+    send(calculator, {:*, [2, 5]})
+    assert_receive({:ok, 10})
+    assert Process.alive?(calculator)
+
+    send(calculator, {:-, [2, 5]})
+    assert_receive({:ok, -3})
+    assert Process.alive?(calculator)
+
+    send(calculator, {:exit})
+    assert_receive({:ok, :exited})
+    refute Process.alive?(calculator)
+  end
+
   # 36/50
+
   test "36/50 run_in_process work" do
     assert Solution.run_in_process(fn -> 2 + 2 end) |> is_pid()
     assert Solution.run_in_process(fn -> "hello world" end) |> is_pid()
