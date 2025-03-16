@@ -1,7 +1,27 @@
 defmodule Solution do
   # 37/50
-  def calculate(f) do
-    0
+  def calculate(parent) do
+    receive do
+      {:+, [x, y]} ->
+        send(parent, {:ok, x + y})
+        calculate(parent)
+
+      {:-, [x, y]} ->
+        send(parent, {:ok, x - y})
+        calculate(parent)
+
+      {:/, [x, y]} ->
+        send(parent, {:ok, x / y})
+        calculate(parent)
+
+      {:*, [x, y]} ->
+        send(parent, {:ok, x * y})
+        calculate(parent)
+
+      {:exit} ->
+        send(parent, {:ok, :exited})
+        # IO.puts("exit...")
+    end
   end
 
   # 36/50
