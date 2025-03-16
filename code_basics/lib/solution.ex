@@ -1,25 +1,25 @@
 defmodule Solution do
   # 37/50
-  def calculate(parent) do
+  def calculate(pid) do
     receive do
       {:+, [x, y]} ->
-        send(parent, {:ok, x + y})
-        calculate(parent)
+        send(pid, {:ok, x + y})
+        calculate(pid)
 
       {:-, [x, y]} ->
-        send(parent, {:ok, x - y})
-        calculate(parent)
+        send(pid, {:ok, x - y})
+        calculate(pid)
 
       {:/, [x, y]} ->
-        send(parent, {:ok, x / y})
-        calculate(parent)
+        send(pid, {:ok, x / y})
+        calculate(pid)
 
       {:*, [x, y]} ->
-        send(parent, {:ok, x * y})
-        calculate(parent)
+        send(pid, {:ok, x * y})
+        calculate(pid)
 
       {:exit} ->
-        send(parent, {:ok, :exited})
+        send(pid, {:ok, :exited})
         # IO.puts("exit...")
     end
   end
