@@ -1,4 +1,6 @@
 defmodule Solution do
+  # 38/50
+  # реализация в cache_server.ex 
   # 37/50
   def calculate(pid) do
     receive do
