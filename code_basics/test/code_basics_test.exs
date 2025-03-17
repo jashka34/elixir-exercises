@@ -3,6 +3,25 @@ defmodule CodeBasicsTest do
   import ExUnit.CaptureIO
   import Solution
 
+  test "39/50 foobar supervisor work" do
+    result = supervise_foobar(80)
+
+    assert result ==
+             "Bar Foo Foo Bar Foo FooBar Foo Bar Foo Foo Bar"
+
+    assert Enum.count(String.split(result)) == 11
+
+    result = supervise_foobar(1)
+    assert Enum.count(String.split(result)) == 47
+
+    assert result ==
+             "Foo Bar Foo Foo Bar Foo FooBar Foo Bar Foo Foo Bar Foo FooBar Foo Bar Foo Foo Bar Foo FooBar Foo Bar Foo Foo Bar Foo FooBar Foo Bar Foo Foo Bar Foo FooBar Foo Bar Foo Foo Bar Foo FooBar Foo Bar Foo Foo Bar"
+
+    assert supervise_foobar(101) == ""
+    assert supervise_foobar(-123) == ""
+    assert supervise_foobar(0) == ""
+  end
+
   describe "38/50 cache server work" do
     test "put" do
       parent = self()

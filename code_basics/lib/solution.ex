@@ -1,4 +1,36 @@
 defmodule Solution do
+  # 39/50
+  def supervise_foobar(n) when n > 100 or n < 1, do: ""
+
+  def supervise_foobar(n) do
+    supervise_foobar(n, "")
+  end
+
+  def supervise_foobar(n, acc) when n > 100, do: acc
+
+  def supervise_foobar(n, acc) do
+    Process.flag(:trap_exit, true)
+    _pid = spawn_link(fn -> Worker.work(n) end)
+
+    receive do
+      {:EXIT, _pid, :foo} ->
+        # IO.puts("foo!!!")
+        supervise_foobar(n + 1, String.trim(acc <> " Foo"))
+
+      {:EXIT, _pid, :bar} ->
+        # IO.puts("bar!!!")
+        supervise_foobar(n + 1, String.trim(acc <> " Bar"))
+
+      {:EXIT, _pid, :foobar} ->
+        # IO.puts("foobar!!!")
+        supervise_foobar(n + 1, String.trim(acc <> " FooBar"))
+
+      {:EXIT, _pid, :normal} ->
+        # IO.puts("normal!!!")
+        supervise_foobar(n + 1, acc)
+    end
+  end
+
   # 38/50
   # реализация в cache_server.ex 
   # 37/50
