@@ -1,0 +1,2 @@
+defmodule Accumulator do
+end

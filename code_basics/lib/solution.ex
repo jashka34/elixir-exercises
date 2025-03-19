@@ -1,4 +1,6 @@
 defmodule Solution do
+  # 40/50
+
   # 39/50
   def supervise_foobar(n) when n > 100 or n < 1, do: ""
 
