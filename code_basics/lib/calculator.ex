@@ -1,5 +1,6 @@
 defmodule Calculator do
-  def exec(op, x, y) do
-    0
-  end
+  def exec(:+, x, y), do: x + y
+  def exec(:-, x, y), do: x - y
+  def exec(:*, x, y), do: x * y
+  def exec(:/, x, y), do: div(x, y)
 end

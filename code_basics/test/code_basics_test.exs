@@ -9,20 +9,20 @@ defmodule CodeBasicsTest do
       assert Calculator.exec(:+, 10, 20) == 30
     end
 
-    # test "subtraction" do
-    #   assert Calculator.exec(:-, 2, 3) == -1
-    #   assert Calculator.exec(:-, 10, 20) == -10
-    # end
-    #
-    # test "multiply" do
-    #   assert Calculator.exec(:*, 2, 3) == 6
-    #   assert Calculator.exec(:*, 10, 20) == 200
-    # end
-    #
-    # test "division" do
-    #   assert Calculator.exec(:/, 2, 3) == 0
-    #   assert Calculator.exec(:/, 20, 10) == 2
-    # end
+    test "subtraction" do
+      assert Calculator.exec(:-, 2, 3) == -1
+      assert Calculator.exec(:-, 10, 20) == -10
+    end
+
+    test "multiply" do
+      assert Calculator.exec(:*, 2, 3) == 6
+      assert Calculator.exec(:*, 10, 20) == 200
+    end
+
+    test "division" do
+      assert Calculator.exec(:/, 2, 3) == 0
+      assert Calculator.exec(:/, 20, 10) == 2
+    end
 
     # test "accumulator agent" do
     #   Accumulator.start_link(0)
