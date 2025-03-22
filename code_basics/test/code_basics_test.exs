@@ -3,95 +3,95 @@ defmodule CodeBasicsTest do
   import ExUnit.CaptureIO
   import Solution
 
-  describe "41/50 supervisors" do
-    describe "incrementor code unchanged" do
-      test "current_value work" do
-        Incrementor.start_link()
+  describe "41/50 incrementor code unchanged" do
+    test "current_value work" do
+      Incrementor.start_link()
 
-        assert Incrementor.current_value() == 0
-      end
-
-      test "run work" do
-        Incrementor.start_link()
-
-        Incrementor.run()
-        assert Incrementor.current_value() == 1
-
-        Incrementor.run()
-        assert Incrementor.current_value() == 2
-      end
+      assert Incrementor.current_value() == 0
     end
 
-    describe "decrementor code unchanged" do
-      test "current_value work" do
-        Decrementor.start_link()
+    test "run work" do
+      Incrementor.start_link()
 
-        assert Decrementor.current_value() == 0
-      end
+      Incrementor.run()
+      assert Incrementor.current_value() == 1
 
-      test "run work" do
-        Decrementor.start_link()
+      Incrementor.run()
+      assert Incrementor.current_value() == 2
+    end
+  end
 
-        Decrementor.run()
-        assert Decrementor.current_value() == -1
+  describe "41/50 decrementor code unchanged" do
+    test "current_value work" do
+      Decrementor.start_link()
 
-        Decrementor.run()
-        assert Decrementor.current_value() == -2
-      end
+      assert Decrementor.current_value() == 0
     end
 
-    describe "solution supervisor work" do
-      test "initialization work" do
-        {:ok, pid} = Solution.start_link()
+    test "run work" do
+      Decrementor.start_link()
 
-        assert [
-                 {Decrementor, _, :worker, [Decrementor]},
-                 {Incrementor, _, :worker, [Incrementor]}
-               ] = Supervisor.which_children(pid)
+      Decrementor.run()
+      assert Decrementor.current_value() == -1
 
-        assert Supervisor.count_children(pid) == %{
-                 active: 2,
-                 workers: 2,
-                 supervisors: 0,
-                 specs: 2
-               }
-      end
+      Decrementor.run()
+      assert Decrementor.current_value() == -2
+    end
+  end
 
-      test "restart straregy" do
-        {:ok, pid} = Solution.start_link()
+  describe "41/50 solution supervisor work" do
+    test "initialization work" do
+      {:ok, pid} = Solution4150.start_link()
+      # IO.inspect(pid)
+      # dbg(Supervisor.which_children(pid))
 
-        Decrementor.run()
-        assert Decrementor.current_value() == -1
+      assert [
+               {Decrementor, _, :worker, [Decrementor]},
+               {Incrementor, _, :worker, [Incrementor]}
+             ] = Supervisor.which_children(pid)
 
-        Incrementor.run()
-        assert Incrementor.current_value() == 1
+      assert Supervisor.count_children(pid) == %{
+               active: 2,
+               workers: 2,
+               supervisors: 0,
+               specs: 2
+             }
+    end
 
-        Process.exit(Process.whereis(Decrementor), :kill)
-        Supervisor.restart_child(pid, Process.whereis(Decrementor))
+    test "restart straregy" do
+      {:ok, pid} = Solution4150.start_link()
 
-        assert Supervisor.count_children(pid) == %{
-                 active: 2,
-                 workers: 2,
-                 supervisors: 0,
-                 specs: 2
-               }
+      Decrementor.run()
+      assert Decrementor.current_value() == -1
 
-        assert Decrementor.current_value() == 0
-        assert Incrementor.current_value() == 1
+      Incrementor.run()
+      assert Incrementor.current_value() == 1
 
-        Process.exit(Process.whereis(Incrementor), :kill)
-        Supervisor.restart_child(pid, Process.whereis(Incrementor))
+      Process.exit(Process.whereis(Decrementor), :kill)
+      Supervisor.restart_child(pid, Process.whereis(Decrementor))
 
-        assert Supervisor.count_children(pid) == %{
-                 active: 2,
-                 workers: 2,
-                 supervisors: 0,
-                 specs: 2
-               }
+      assert Supervisor.count_children(pid) == %{
+               active: 2,
+               workers: 2,
+               supervisors: 0,
+               specs: 2
+             }
 
-        assert Decrementor.current_value() == 0
-        assert Incrementor.current_value() == 0
-      end
+      assert Decrementor.current_value() == 0
+      assert Incrementor.current_value() == 1
+
+      Process.exit(Process.whereis(Incrementor), :kill)
+      Supervisor.restart_child(pid, Process.whereis(Incrementor))
+
+      assert Supervisor.count_children(pid) == %{
+               active: 2,
+               workers: 2,
+               supervisors: 0,
+               specs: 2
+             }
+
+      assert Decrementor.current_value() == 0
+      assert Incrementor.current_value() == 0
     end
   end
 

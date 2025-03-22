@@ -1,17 +1,19 @@
 defmodule Solution do
+  # 41/50
+  # реализация в Solution4150 
   # 40/50
   # реализация в Calculator и Accumulator
   # 39/50
   def supervise_foobar(n) when n > 100 or n < 1, do: ""
 
   def supervise_foobar(n) do
+    Process.flag(:trap_exit, true)
     supervise_foobar(n, "")
   end
 
   def supervise_foobar(n, acc) when n > 100, do: acc
 
   def supervise_foobar(n, acc) do
-    Process.flag(:trap_exit, true)
     _pid = spawn_link(fn -> Worker.work(n) end)
 
     receive do
