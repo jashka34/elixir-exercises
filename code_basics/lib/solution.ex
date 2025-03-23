@@ -1,4 +1,6 @@
 defmodule Solution do
+  # 42/50
+  # реализация в ProcessRegister
   # 41/50
   # реализация в Solution4150 
   # 40/50
