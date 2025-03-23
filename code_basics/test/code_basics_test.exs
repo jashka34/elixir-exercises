@@ -99,6 +99,8 @@ defmodule CodeBasicsTest do
                supervisors: 0,
                specs: 2
              }
+
+      # assert Solution4150.term_childs() == :ok
     end
 
     test "restart straregy" do
