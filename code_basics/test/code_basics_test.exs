@@ -3,6 +3,56 @@ defmodule CodeBasicsTest do
   import ExUnit.CaptureIO
   import Solution
 
+  describe "43/50 solution genserver work" do
+    test "initialization work" do
+      {:ok, pid} = Solution4350.start_link()
+
+      assert Process.alive?(pid)
+      Process.exit(pid, :normal)
+    end
+
+    test "current_state work" do
+      {:ok, pid} = Solution4350.start_link(%{test: "value"})
+
+      assert Solution4350.current_state() == %{test: "value"}
+      Process.exit(pid, :normal)
+    end
+
+    test "reset work" do
+      {:ok, pid} = Solution4350.start_link(%{test: "value"})
+
+      assert Solution4350.reset() == :ok
+      assert Solution4350.current_state() == %{}
+      Process.exit(pid, :normal)
+    end
+
+    test "has? work" do
+      {:ok, pid} = Solution4350.start_link(%{test: "value"})
+
+      assert Solution4350.has?(:test)
+      refute Solution4350.has?(:some)
+      Process.exit(pid, :normal)
+    end
+
+    test "add work" do
+      {:ok, pid} = Solution4350.start_link(%{test: "value"})
+
+      assert Solution4350.add(:some, 2) == :ok
+      assert Solution4350.current_state() == %{test: "value", some: 2}
+      Process.exit(pid, :normal)
+    end
+
+    test "drop work" do
+      {:ok, pid} = Solution4350.start_link(%{test: "value"})
+
+      assert Solution4350.drop(:some) == :ok
+      assert Solution4350.current_state() == %{test: "value"}
+      assert Solution4350.drop(:test) == :ok
+      assert Solution4350.current_state() == %{}
+      Process.exit(pid, :normal)
+    end
+  end
+
   describe "42/50 process registration" do
     test "list_registered work" do
       {:ok, _} = ProcessRegister.start_link()
@@ -84,7 +134,7 @@ defmodule CodeBasicsTest do
 
   describe "41/50 solution supervisor work" do
     test "initialization work" do
-      {:ok, pid} = Solution4150.start_link()
+      {:ok, pid} = Solution4350.150.start_link()
       # IO.inspect(pid)
       # dbg(Supervisor.which_children(pid))
 
@@ -100,11 +150,11 @@ defmodule CodeBasicsTest do
                specs: 2
              }
 
-      # assert Solution4150.term_childs() == :ok
+      # assert Solution4350.150.term_childs() == :ok
     end
 
     test "restart straregy" do
-      {:ok, pid} = Solution4150.start_link()
+      {:ok, pid} = Solution4350.150.start_link()
 
       Decrementor.run()
       assert Decrementor.current_value() == -1
@@ -276,7 +326,7 @@ defmodule CodeBasicsTest do
 
   test "37/50 calculator process work" do
     parent = self()
-    calculator = spawn(fn -> Solution.calculate(parent) end)
+    calculator = spawn(fn -> Solution4350.calculate(parent) end)
 
     send(calculator, {:+, [2, 5]})
     assert_receive({:ok, 7})
@@ -298,8 +348,8 @@ defmodule CodeBasicsTest do
   # 36/50
 
   test "36/50 run_in_process work" do
-    assert Solution.run_in_process(fn -> 2 + 2 end) |> is_pid()
-    assert Solution.run_in_process(fn -> "hello world" end) |> is_pid()
+    assert Solution4350.run_in_process(fn -> 2 + 2 end) |> is_pid()
+    assert Solution4350.run_in_process(fn -> "hello world" end) |> is_pid()
   end
 
   # 35/50
@@ -330,8 +380,8 @@ defmodule CodeBasicsTest do
       my_div(128, 0)
     end)
 
-    assert Solution.my_div(128, 2) == 64
-    assert Solution.my_div(0, 2) == 0
+    assert Solution4350.my_div(128, 2) == 64
+    assert Solution4350.my_div(0, 2) == 0
   end
 
   # 32/50
@@ -386,7 +436,7 @@ defmodule CodeBasicsTest do
   # 29/50
   describe "29/50 generate_pets work" do
     test "with valid input" do
-      pets = Solution.generate_pets(3)
+      pets = Solution4350.generate_pets(3)
 
       assert is_list(pets)
 
@@ -397,7 +447,7 @@ defmodule CodeBasicsTest do
     end
 
     test "with invalid input" do
-      pets = Solution.generate_pets(-20)
+      pets = Solution4350.generate_pets(-20)
 
       assert is_list(pets)
       assert Enum.empty?(pets)
