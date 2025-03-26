@@ -18,14 +18,14 @@ defmodule CodeBasicsTest do
       Process.exit(pid, :normal)
     end
 
-    # test "reset work" do
-    #   {:ok, pid} = Solution4350.start_link(%{test: "value"})
-    #
-    #   assert Solution4350.reset() == :ok
-    #   assert Solution4350.current_state() == %{}
-    #   Process.exit(pid, :normal)
-    # end
-    #
+    test "reset work" do
+      {:ok, pid} = Solution4350.start_link(%{test: "value"})
+
+      assert Solution4350.reset() == :ok
+      assert Solution4350.current_state() == %{}
+      Process.exit(pid, :normal)
+    end
+
     # test "has? work" do
     #   {:ok, pid} = Solution4350.start_link(%{test: "value"})
     #
