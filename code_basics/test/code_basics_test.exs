@@ -26,22 +26,22 @@ defmodule CodeBasicsTest do
       Process.exit(pid, :normal)
     end
 
-    # test "has? work" do
-    #   {:ok, pid} = Solution4350.start_link(%{test: "value"})
-    #
-    #   assert Solution4350.has?(:test)
-    #   refute Solution4350.has?(:some)
-    #   Process.exit(pid, :normal)
-    # end
-    #
-    # test "add work" do
-    #   {:ok, pid} = Solution4350.start_link(%{test: "value"})
-    #
-    #   assert Solution4350.add(:some, 2) == :ok
-    #   assert Solution4350.current_state() == %{test: "value", some: 2}
-    #   Process.exit(pid, :normal)
-    # end
-    #
+    test "has? work" do
+      {:ok, pid} = Solution4350.start_link(%{test: "value"})
+
+      assert Solution4350.has?(:test)
+      refute Solution4350.has?(:some)
+      Process.exit(pid, :normal)
+    end
+
+    test "add work" do
+      {:ok, pid} = Solution4350.start_link(%{test: "value"})
+
+      assert Solution4350.add(:some, 2) == :ok
+      assert Solution4350.current_state() == %{test: "value", some: 2}
+      Process.exit(pid, :normal)
+    end
+
     # test "drop work" do
     #   {:ok, pid} = Solution4350.start_link(%{test: "value"})
     #
