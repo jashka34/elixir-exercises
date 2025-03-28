@@ -42,15 +42,15 @@ defmodule CodeBasicsTest do
       Process.exit(pid, :normal)
     end
 
-    # test "drop work" do
-    #   {:ok, pid} = Solution4350.start_link(%{test: "value"})
-    #
-    #   assert Solution4350.drop(:some) == :ok
-    #   assert Solution4350.current_state() == %{test: "value"}
-    #   assert Solution4350.drop(:test) == :ok
-    #   assert Solution4350.current_state() == %{}
-    #   Process.exit(pid, :normal)
-    # end
+    test "drop work" do
+      {:ok, pid} = Solution4350.start_link(%{test: "value"})
+
+      assert Solution4350.drop(:some) == :ok
+      assert Solution4350.current_state() == %{test: "value"}
+      assert Solution4350.drop(:test) == :ok
+      assert Solution4350.current_state() == %{}
+      Process.exit(pid, :normal)
+    end
   end
 
   describe "42/50 process registration" do
