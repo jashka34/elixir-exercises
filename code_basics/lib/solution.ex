@@ -1,4 +1,8 @@
 defmodule Solution do
+  # 44/50
+  defmacro my_abs(n) do
+  end
+
   # 43/50
   # реализация в Solution4350
   # 42/50
