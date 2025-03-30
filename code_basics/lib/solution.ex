@@ -1,9 +1,8 @@
 defmodule Solution do
   # 44/50
   defmacro my_abs(n) do
-    IO.inspect(n)
-    # {_, [], [fn x -> abs(x) end, n]}
-    0
+    # IO.inspect(n)
+    {:abs, [], [n]}
   end
 
   # 43/50
