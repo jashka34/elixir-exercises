@@ -3,6 +3,13 @@ defmodule CodeBasicsTest do
   import ExUnit.CaptureIO
   import Solution
 
+  test "45/50 unless" do
+    assert my_unless(false, do: 1 + 3) == 4
+    # refute my_unless(true, do: 2)
+    refute my_unless(2 == 2, do: "Hello")
+    # assert my_unless(1 == 2, do: "world") == "world"
+  end
+
   test "44/50 my_abs macro work" do
     assert my_abs(2) == 2
     assert my_abs(abs(-3)) == 3

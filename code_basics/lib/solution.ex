@@ -1,4 +1,17 @@
 defmodule Solution do
+  # 45/50
+  defmacro my_unless(b, value) do
+    # IO.inspect(b)
+    IO.inspect(value)
+    # IO.puts(unquote(b))
+    quote do
+      case unquote(b) do
+        true -> nil
+        false -> {:do, [], [value]}
+      end
+    end
+  end
+
   # 44/50
   defmacro my_abs(n) do
     # IO.inspect(n)
