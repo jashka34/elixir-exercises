@@ -3,6 +3,21 @@ defmodule CodeBasicsTest do
   import ExUnit.CaptureIO
   import Solution
 
+  defmodule Exercise do
+    require Solution
+
+    Solution.prohibit_words(["hello", "world", "foo"])
+  end
+
+  test "46/50 prohibit_words" do
+    assert Exercise.forbidden?("hello")
+    assert Exercise.forbidden?("world")
+    assert Exercise.forbidden?("foo")
+    refute Exercise.forbidden?("baz")
+    refute Exercise.forbidden?(2)
+    refute Exercise.forbidden?(%{hello: :world})
+  end
+
   test "45/50 unless" do
     assert my_unless(false, do: 1 + 3) == 4
     refute my_unless(true, do: 2)

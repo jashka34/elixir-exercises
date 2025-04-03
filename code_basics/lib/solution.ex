@@ -1,4 +1,9 @@
 defmodule Solution do
+  # 46/50
+  defmacro prohibit_words(words) do
+    false
+  end
+
   # 45/50
   defmacro my_unless(b, do: value) do
     quote do
