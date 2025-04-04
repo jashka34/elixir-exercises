@@ -1,7 +1,13 @@
 defmodule Solution do
   # 46/50
   defmacro prohibit_words(words) do
-    false
+    quote do
+      def forbidden?(word) do
+        # IO.inspect(unquote(words))
+        # IO.inspect(word)
+        Enum.count(unquote(words), fn w -> w == word end) > 0
+      end
+    end
   end
 
   # 45/50
