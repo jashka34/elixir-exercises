@@ -1,12 +1,23 @@
 defmodule Solution do
+  # 47/50
+  defmacro with_logging(f) do
+    quote do: IO.puts("wtf")
+  end
+
   # 46/50
   defmacro prohibit_words(words) do
     quote do
       def forbidden?(word) do
         # IO.inspect(unquote(words))
         # IO.inspect(word)
-        Enum.count(unquote(words), fn w -> w == word end) > 0
+        Enum.count_until(unquote(words), fn w -> w == word end, 1) > 0
       end
+
+      # Решение учителя
+      # def forbidden?(word) when is_bitstring(word) do
+      #   word in unquote(words)
+      # end
+      # def forbidden?(_), do: false
     end
   end
 

@@ -7,6 +7,24 @@ defmodule CodeBasicsTest do
     require Solution
 
     Solution.prohibit_words(["hello", "world", "foo"])
+
+    def run_fn(function) do
+      Solution.with_logging do
+        function
+      end
+    end
+  end
+
+  test "47/50 macros logging" do
+    assert capture_io(fn -> Exercise.run_fn(fn -> 1 + 5 end) end) ==
+             "Started execution...\nExecution result is: 6\n"
+
+    assert capture_io(fn -> Exercise.run_fn(fn -> %{hello: :world} end) end) ==
+             "Started execution...\nExecution result is: %{hello: :world}\n"
+
+    assert capture_io(fn ->
+             Exercise.run_fn(fn -> "some string" end)
+           end) == "Started execution...\nExecution result is: \"some string\"\n"
   end
 
   test "46/50 prohibit_words" do
