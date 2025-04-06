@@ -1,7 +1,12 @@
 defmodule Solution do
   # 47/50
   defmacro with_logging(f) do
-    quote do: IO.puts("wtf")
+    quote do
+      IO.puts("Started execution...")
+      var = unquote(f)
+      IO.puts("Execution result is: #{var}")
+      var
+    end
   end
 
   # 46/50
