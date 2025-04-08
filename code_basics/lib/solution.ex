@@ -1,4 +1,11 @@
 defmodule Solution do
+  # 48/50
+  def collect_module_stats(ms) do
+    q = Code.string_to_quoted(ms)
+    Macro.prewalk(q)
+    nil
+  end
+
   # 47/50
   defmacro with_logging(do: f) do
     quote do
