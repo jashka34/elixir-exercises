@@ -2,7 +2,8 @@ defmodule Solution do
   # 48/50
   def collect_module_stats(ms) do
     q = Code.string_to_quoted(ms)
-    Macro.prewalk(q)
+    res = Macro.prewalk([], q)
+    IO.inspect(res)
     nil
   end
 
