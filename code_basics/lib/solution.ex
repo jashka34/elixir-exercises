@@ -1,10 +1,31 @@
 defmodule Solution do
   # 48/50
   def collect_module_stats(ms) do
-    q = Code.string_to_quoted(ms)
-    res = Macro.prewalk([], q)
-    IO.inspect(res)
-    nil
+    {_, q} = Code.string_to_quoted(ms)
+    # dbg(q)
+
+    res =
+      Macro.prewalk(q, [], fn
+        {atom, _, p2} = ast, acc when atom in [:def, :defp] ->
+          [{fname, _, params}, _] = p2
+
+          # IO.puts(
+          #   "def!!! p2: #{inspect(p2)} fname: #{inspect(fname)} len params: #{length(params)}"
+          # )
+
+          {ast, [%{arity: length(params), name: fname} | acc]}
+
+        ast, acc ->
+          # dbg(other)
+          # IO.puts("x: #{inspect(x)}")
+          # IO.puts("acc: #{inspect(acc)}")
+          {ast, acc}
+      end)
+
+    # dbg(res)
+    # IO.inspect(res)
+    {_, ret} = res
+    ret
   end
 
   # 47/50
