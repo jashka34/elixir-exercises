@@ -15,6 +15,50 @@ defmodule CodeBasicsTest do
     end
   end
 
+  describe "49/50 datetimes" do
+    test "with Date" do
+      time = Date.utc_today()
+
+      assert Date.add(time, -2) == Solution.shift_days(time, -2)
+      assert Date.add(time, 2) == Solution.shift_days(time, 2)
+      assert Date.add(time, 1) == Solution.shift_days(time, 1)
+      assert Date.add(time, 0) == Solution.shift_days(time, 0)
+    end
+
+    test "with NaiveDateTime" do
+      time = NaiveDateTime.utc_now()
+
+      assert NaiveDateTime.add(time, days_to_seconds(-2), :second) ==
+               Solution.shift_days(time, -2)
+
+      assert NaiveDateTime.add(time, days_to_seconds(2), :second) == Solution.shift_days(time, 2)
+      assert NaiveDateTime.add(time, days_to_seconds(1), :second) == Solution.shift_days(time, 1)
+      assert NaiveDateTime.add(time, 0, :second) == Solution.shift_days(time, 0)
+    end
+
+    test "with DateTime" do
+      time = DateTime.utc_now()
+
+      assert DateTime.add(time, days_to_seconds(-2), :second) == Solution.shift_days(time, -2)
+      assert DateTime.add(time, days_to_seconds(2), :second) == Solution.shift_days(time, 2)
+      assert DateTime.add(time, days_to_seconds(1), :second) == Solution.shift_days(time, 1)
+      assert DateTime.add(time, 0, :second) == Solution.shift_days(time, 0)
+    end
+
+    test "with Time" do
+      time = Time.utc_now()
+
+      assert Time.add(time, days_to_seconds(-2), :second) == Solution.shift_days(time, -2)
+      assert Time.add(time, days_to_seconds(2), :second) == Solution.shift_days(time, 2)
+      assert Time.add(time, days_to_seconds(1), :second) == Solution.shift_days(time, 1)
+      assert Time.add(time, 0, :second) == Solution.shift_days(time, 0)
+    end
+
+    defp days_to_seconds(amount) do
+      amount * 24 * 60 * 60
+    end
+  end
+
   describe "48/50 module stats" do
     test "when no function defined" do
       new_module = """

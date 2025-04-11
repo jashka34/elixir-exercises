@@ -1,4 +1,10 @@
 defmodule Solution do
+  # 49/50
+  def shift_days(shift) do
+    # shift when 
+    DateTime.utc_now()
+  end
+
   # 48/50
   def collect_module_stats(ms) do
     {_, q} = Code.string_to_quoted(ms)
