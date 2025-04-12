@@ -1,8 +1,40 @@
 defmodule Solution do
   # 49/50
-  def shift_days(shift) do
-    # shift when 
-    DateTime.utc_now()
+  @spec shift_days(
+          time :: Time.t() | NaiveDateTime.t() | Date.t() | Time.t(),
+          amount :: integer()
+        ) :: Time.t() | NaiveDateTime.t() | Date.t() | Time.t()
+  def shift_days(time, amount) do
+    case time do
+      %{__struct__: Time} -> time_add(time, amount)
+      %{__struct__: NaiveDateTime} -> naivetime_add(time, amount)
+      %{__struct__: Date} -> date_add(time, amount)
+      %{__struct__: DateTime} -> datetime_add(time, amount)
+    end
+  end
+
+  defp date_add(date, amount) do
+    IO.puts("its date")
+    Date.add(date, amount)
+  end
+
+  defp time_add(date, amount) do
+    IO.puts("its time")
+    Time.add(date, days_to_seconds(amount))
+  end
+
+  defp naivetime_add(date, amount) do
+    IO.puts("its naivetime")
+    NaiveDateTime.add(date, days_to_seconds(amount))
+  end
+
+  defp datetime_add(date, amount) do
+    IO.puts("its datetime")
+    NaiveDateTime.add(date, days_to_seconds(amount))
+  end
+
+  defp days_to_seconds(amount) do
+    amount * 24 * 60 * 60
   end
 
   # 48/50
